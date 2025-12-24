@@ -30,22 +30,15 @@ import {
 } from "@/components/ui/accordion";
 import { Separator } from "../ui/separator";
 
+import { categories as dynamicCategories } from "@/lib/blog-data";
+
 const categories = [
   { name: "All Posts", icon: LayoutDashboard, slug: "" },
-  { name: "Assignment", icon: FileText, slug: "assignment" },
-  { name: "Bangladesh", icon: Globe, slug: "bangladesh" },
-  { name: "Case Study", icon: Search, slug: "case-study" },
-  { name: "Design", icon: Palette, slug: "design" },
-  { name: "DPDT (IP Office) Bangladesh", icon: Building2, slug: "dpdt-bangladesh" },
-  { name: "FAQ", icon: HelpCircle, slug: "faq" },
-  { name: "Gallery", icon: ImageIcon, slug: "gallery" },
-  { name: "IP Laws and Rules", icon: BookOpen, slug: "ip-laws-rules" },
-  { name: "IP News", icon: Newspaper, slug: "ip-news" },
-  { name: "IPR Enforcement", icon: ShieldCheck, slug: "ipr-enforcement" },
-  { name: "Journal", icon: FileCode, slug: "journal" },
-  { name: "Patent", icon: Microscope, slug: "patent" },
-  { name: "Trademark", icon: Copyright, slug: "trademark" },
-  { name: "Utility Model", icon: Zap, slug: "utility-model" }
+  ...dynamicCategories.map(cat => ({
+    name: cat.name,
+    icon: FileText, // Default icon, can be extended later
+    slug: cat.id
+  }))
 ];
 
 const aiCategories = [
