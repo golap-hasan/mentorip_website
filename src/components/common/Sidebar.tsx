@@ -70,7 +70,7 @@ export function Sidebar() {
             <div className="flex flex-col space-y-1 mt-2">
               {categories.map((cat, i) => {
                 const href = cat.slug === "" ? "/" : `/category/${cat.slug}`;
-                const isActive = pathname === href;
+                const isActive = cat.slug === "" ? pathname === "/" : pathname.startsWith(href);
                 return (
                   <Link 
                     key={i} 
@@ -109,7 +109,7 @@ export function Sidebar() {
             <div className="flex flex-col space-y-1 mt-2">
               {aiCategories.map((cat, i) => {
                 const href = `/ai/${cat.slug}`;
-                const isActive = pathname === href;
+                const isActive = pathname.startsWith(href);
                 return (
                   <Link 
                     key={i} 
