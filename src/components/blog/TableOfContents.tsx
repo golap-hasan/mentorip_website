@@ -37,24 +37,24 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   }, [items]);
 
   return (
-    <div className="bg-card rounded-lg border p-5 shadow-sm sticky top-24">
-      <div className="flex items-center gap-2 mb-4 pb-3 border-b">
-        <List className="w-4 h-4 text-primary" />
-        <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500">Post Outline</h3>
+    <div className="bg-white dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 p-5 shadow-sm sticky top-24">
+      <div className="flex items-center gap-2 mb-4 pb-2.5 border-b border-slate-50 dark:border-slate-800/50">
+        <List className="w-3.5 h-3.5 text-primary opacity-80" />
+        <h3 className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-slate-400">Post Outline</h3>
       </div>
-      <nav className="space-y-1">
+      <nav className="space-y-0.5">
         {items.map((item) => (
           <Link
             key={item.id}
             href={`#${item.id}`}
-            className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 text-[11.5px] rounded-lg transition-all ${
               activeId === item.id
-                ? "bg-primary/5 text-primary font-bold border-l-2 border-primary"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground border-l-2 border-transparent"
+                ? "bg-primary/5 text-primary font-bold"
+                : "text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-100"
             }`}
           >
-            {item.icon && <span className="text-base">{item.icon}</span>}
-            <span className="line-clamp-1">{item.title}</span>
+            {item.icon && <span className="text-sm opacity-90">{item.icon}</span>}
+            <span className="truncate">{item.title}</span>
           </Link>
         ))}
       </nav>

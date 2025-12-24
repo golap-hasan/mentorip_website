@@ -31,8 +31,9 @@ async function getPostData(slug: string) {
   return null;
 }
 
-export default async function PatentPostPage({ params }: { params: { slug: string } }) {
-  const post = await getPostData(params.slug);
+export default async function PatentPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getPostData(slug);
 
   if (!post) {
     return <div className="p-10 text-center">Post not found</div>;

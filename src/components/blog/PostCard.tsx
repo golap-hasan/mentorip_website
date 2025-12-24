@@ -28,50 +28,47 @@ export function PostCard({
 }: PostCardProps) {
   return (
     <Link href={`/category/${categorySlug}/${slug}`}>
-      <article className="group bg-card rounded-lg border shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden h-full flex flex-col">
+      <article className="group bg-card rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-all duration-300 overflow-hidden h-full flex flex-col">
         {imageUrl && (
-          <div className="relative w-full h-48 bg-muted overflow-hidden border-b">
+          <div className="relative w-full h-40 bg-muted overflow-hidden">
             <Image
               src={imageUrl}
               alt={title}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-300 contrast-[0.95] brightness-[0.98]"
             />
             {readTime && (
-              <div className="absolute bottom-3 right-3 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-md text-[10px] font-medium flex items-center gap-1">
-                <Clock className="w-3 h-3" />
+              <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-md px-2 py-0.5 rounded text-[9px] font-semibold text-slate-500 flex items-center gap-1 border border-white/20">
+                <Clock className="w-2.5 h-2.5" />
                 {readTime}
               </div>
             )}
           </div>
         )}
 
-        <div className="p-5 flex-1 flex flex-col">
+        <div className="p-4 flex-1 flex flex-col">
           {tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-3">
-              {tags.slice(0, 2).map((tag, i) => (
-                <Badge key={i} variant="secondary" className="text-[10px] px-2 py-0">
+            <div className="flex flex-wrap gap-1.5 mb-2.5">
+              {tags.slice(0, 1).map((tag, i) => (
+                <span key={i} className="text-[9px] font-bold uppercase tracking-widest text-primary/70">
                   {tag}
-                </Badge>
+                </span>
               ))}
             </div>
           )}
 
-          <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2 leading-tight">
+          <h3 className="text-base font-bold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors mb-2 line-clamp-2 leading-tight">
             {title}
           </h3>
 
-          <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
+          <p className="text-[12px] text-muted-foreground line-clamp-2 mb-4 flex-1 leading-relaxed">
             {excerpt}
           </p>
 
-          <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-3 border-t">
-            <div className="flex items-center gap-2">
-               <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-[10px]">⚖️</div>
-               <span className="font-medium">{author}</span>
-            </div>
+          <div className="flex items-center justify-between text-[10px] text-slate-400 pt-3 border-t border-slate-50 dark:border-slate-800/50">
+            <span className="font-medium truncate max-w-[120px]">{author}</span>
             {date && (
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 opacity-70">
                 <Calendar className="w-2.5 h-2.5" />
                 <span>{date}</span>
               </div>
