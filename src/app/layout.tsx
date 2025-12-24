@@ -43,7 +43,7 @@ export default function RootLayout({
                 <main className="max-w-[1920px] mx-auto w-full px-4 py-8 flex-1">
                   <div className="flex flex-col lg:flex-row gap-8">
                     {/* Left Sidebar - Desktop only here, Mobile in Navbar Sheet */}
-                    <div className="hidden lg:block w-[240px] flex-shrink-0">
+                    <div className="hidden lg:block w-[280px] flex-shrink-0">
                       <div className="sticky top-24">
                         <Sidebar />
                       </div>

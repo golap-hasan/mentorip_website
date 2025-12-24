@@ -69,7 +69,7 @@ export function MainDashboardContent() {
 
         {/* Post 2 */}
         <Card className="border-0 shadow-sm hover:shadow-md transition-shadow cursor-pointer bg-card">
-           <CardContent className="flex gap-3 h-full px-4 pt-4">
+           <CardContent className="flex gap-3 h-full">
                <div className="w-1/3 bg-muted rounded-md h-24 flex-shrink-0"></div>
                <div className="w-2/3 flex flex-col justify-between">
                    <h3 className="font-semibold text-sm text-card-foreground leading-snug hover:text-primary">
@@ -85,7 +85,7 @@ export function MainDashboardContent() {
 
          {/* Post 3 */}
          <Card className="border-0 shadow-sm hover:shadow-md transition-shadow cursor-pointer bg-rose-500/5 dark:bg-rose-500/10">
-           <CardContent className="flex gap-3 px-4 pt-4">
+           <CardContent className="flex gap-3">
                 <div className="w-1/3 bg-rose-500/20 rounded-md h-24 flex-shrink-0 flex items-center justify-center">
                     <span className="text-rose-500 text-[10px] text-center font-bold">COMMON<br/>GROUNDS</span>
                 </div>
