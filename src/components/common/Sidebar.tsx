@@ -20,7 +20,8 @@ import {
   Microscope,
   Cpu,
   Database,
-  LineChart
+  LineChart,
+  LucideIcon
 } from "lucide-react";
 import {
   Accordion,
@@ -31,22 +32,30 @@ import {
 import { Separator } from "../ui/separator";
 
 import { categories as dynamicCategories } from "@/lib/blog-data";
+import { aiFeatures as dynamicAIFeatures } from "@/lib/ai-data";
+
+// Icon mapping helper
+const iconMap: Record<string, LucideIcon> = {
+  FileText, Globe, Search, Palette, Building2, 
+  HelpCircle, ImageIcon, BookOpen, Newspaper, 
+  ShieldCheck, FileCode, Copyright, Zap, Microscope,
+  Cpu, Database, LineChart
+};
 
 const categories = [
   { name: "All Posts", icon: LayoutDashboard, slug: "" },
   ...dynamicCategories.map(cat => ({
     name: cat.name,
-    icon: FileText, // Default icon, can be extended later
+    icon: iconMap[cat.iconName] || FileText,
     slug: cat.id
   }))
 ];
 
-const aiCategories = [
-  { name: "Smart Search", icon: Cpu, slug: "smart-search" },
-  { name: "AI Case Analysis", icon: Database, slug: "ai-case-analysis" },
-  { name: "Auto Filing", icon: Zap, slug: "auto-filing" },
-  { name: "Market Insights", icon: LineChart, slug: "market-insights" }
-];
+const aiCategories = dynamicAIFeatures.map(feature => ({
+  name: feature.name,
+  icon: iconMap[feature.iconName] || Cpu,
+  slug: feature.id
+}));
 
 export function Sidebar() {
   const pathname = usePathname();

@@ -13,6 +13,7 @@ interface PostCardProps {
   author?: string;
   date?: string;
   readTime?: string;
+  baseHref?: string; // Optional: "category", "ai", etc.
 }
 
 export function PostCard({
@@ -25,9 +26,11 @@ export function PostCard({
   author = "SUPREMEIP, Bangladesh",
   date,
   readTime = "3 min read",
+  baseHref = "category",
 }: PostCardProps) {
+  const rootPath = baseHref.startsWith('/') ? baseHref : `/${baseHref}`;
   return (
-    <Link href={`/category/${categorySlug}/${slug}`}>
+    <Link href={`${rootPath}/${categorySlug}/${slug}`}>
       <article className="group bg-card rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-all duration-300 overflow-hidden h-full flex flex-col">
         {imageUrl && (
           <div className="relative w-full h-40 bg-muted overflow-hidden">
