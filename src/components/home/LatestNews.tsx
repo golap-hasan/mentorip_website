@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { posts, categories } from "@/lib/blog-data";
 
-const POSTS_PER_PAGE = 5;
+const POSTS_PER_PAGE = 4;
 
 export function LatestNews() {
   const [displayCount, setDisplayCount] = useState(POSTS_PER_PAGE);

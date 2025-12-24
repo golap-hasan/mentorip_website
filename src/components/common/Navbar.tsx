@@ -86,7 +86,7 @@ export function Navbar() {
               width={180} 
               height={50} 
               priority
-              className="h-10 w-auto dark:brightness-110"
+              className="h-10 w-auto dark:brightness-200"
             />
           </Link>
         </div>
