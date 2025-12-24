@@ -75,7 +75,7 @@ export const aiPosts: AIPost[] = [
     featureId: "ai-case-analysis",
     title: "Predicting Litigation Outcomes with Case Analysis",
     excerpt: "Analyze historical IP case data to gain strategic insights and probability metrics for your legal battles.",
-    imageUrl: "https://images.unsplash.com/photo-1589391886645-ec59600e163b?q=80&w=1974&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1636362746175-f9e1792c0f51?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     tags: ["Analytics", "Case Law"],
     author: "MENTOR IP AI Team",
     date: "March 8, 2025",

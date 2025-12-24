@@ -23,7 +23,7 @@ export function PostCard({
   categorySlug,
   imageUrl,
   tags = [],
-  author = "SUPREMEIP, Bangladesh",
+  author = "MENTORIP, Bangladesh",
   date,
   readTime = "3 min read",
   baseHref = "category",
