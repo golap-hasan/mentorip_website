@@ -33,7 +33,7 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative w-full max-w-5xl h-[700px] bg-white dark:bg-slate-900 rounded-[3rem] shadow-2xl flex overflow-hidden border border-slate-100 dark:border-white/5"
+        className="relative w-full max-w-5xl h-auto min-h-[600px] lg:h-[700px] bg-white dark:bg-slate-900 rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl flex flex-col lg:flex-row overflow-hidden border border-slate-100 dark:border-white/5 mx-auto"
       >
         {/* Sliding Overlay Panel */}
         <motion.div
@@ -74,7 +74,7 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
         </motion.div>
 
         {/* Login Form Side */}
-        <div className="w-full lg:w-1/2 h-full p-8 md:p-16 flex flex-col justify-center">
+        <div className={`w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center ${!isLogin ? 'hidden lg:flex' : 'flex'}`}>
             <AnimatePresence mode="wait">
                 {isLogin ? (
                     <motion.div
@@ -144,7 +144,7 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
         </div>
 
         {/* Register Form Side (Positioned for when overlay is on left) */}
-        <div className="w-full lg:w-1/2 h-full p-8 md:p-16 flex flex-col justify-center">
+        <div className={`w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center ${isLogin ? 'hidden lg:flex' : 'flex'}`}>
             <AnimatePresence mode="wait">
                 {!isLogin ? (
                     <motion.div
