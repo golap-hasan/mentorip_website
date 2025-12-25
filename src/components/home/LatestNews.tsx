@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock, Calendar, ChevronRight, RefreshCw, BrainCircuit } from "lucide-react";
+import { Clock, Calendar, ChevronRight, RefreshCw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { posts, categories } from "@/lib/blog-data";
@@ -67,12 +67,8 @@ export function LatestNews() {
               {/* Content */}
               <div className="flex flex-col flex-1 p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-6 h-6 rounded-full bg-purple-50 dark:bg-purple-900/30 border border-purple-100 dark:border-purple-800 flex items-center justify-center">
-                    {post.categoryId.includes('ai') || post.author.includes('AI') ? (
-                      <BrainCircuit className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                    ) : (
-                      <Image src="/next.svg" alt="IP" width={12} height={12} className="opacity-70 dark:invert" />
-                    )}
+                  <div className="w-6 h-6 rounded-full bg-slate-50 dark:bg-slate-900/30 border border-slate-100 dark:border-slate-800 flex items-center justify-center">
+                    <Image src="/next.svg" alt="IP" width={12} height={12} className="opacity-70 dark:invert" />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 truncate">
                     {post.author.split(',')[0]}

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const navLinks = [
@@ -31,6 +32,7 @@ const navLinks = [
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   // Avoid hydration mismatch
   useEffect(() => {
@@ -58,16 +60,23 @@ export function Navbar() {
                  <div className="p-4 space-y-6">
                     <nav className="flex flex-col space-y-1">
                         <p className="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Menu</p>
-                        {navLinks.map((link) => (
-                        <Link 
-                            key={link.name} 
-                            href={link.href}
-                            className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-900 rounded-md transition-colors"
-                        >
-                            <link.icon className="w-4 h-4" />
-                            {link.name}
-                        </Link>
-                        ))}
+                        {navLinks.map((link) => {
+                          const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+                          return (
+                            <Link 
+                                key={link.name} 
+                                href={link.href}
+                                className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-md transition-all ${
+                                  isActive 
+                                    ? "bg-primary/5 text-primary" 
+                                    : "text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-900"
+                                }`}
+                            >
+                                <link.icon className={`w-4 h-4 ${isActive ? "text-primary" : ""}`} />
+                                {link.name}
+                            </Link>
+                          );
+                        })}
                     </nav>
                     <div className="border-t pt-6">
                         <ScrollArea className="h-[400px]">
@@ -93,16 +102,23 @@ export function Navbar() {
 
         {/* Center: Navigation Menu (Desktop) */}
         <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-          {navLinks.map((link) => (
-             <Link 
-               key={link.name} 
-               href={link.href} 
-               className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary flex items-center gap-1.5 px-3 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
-             >
-               <link.icon className="w-4 h-4" />
-               <span className="hidden xl:inline">{link.name}</span>
-             </Link>
-          ))}
+          {navLinks.map((link) => {
+             const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+             return (
+               <Link 
+                 key={link.name} 
+                 href={link.href} 
+                 className={`text-sm font-medium flex items-center gap-1.5 px-3 py-2 rounded-md transition-all relative ${
+                   isActive 
+                    ? "bg-primary/5 text-primary" 
+                    : "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-900"
+                 }`}
+               >
+                 <link.icon className={`w-4 h-4 ${isActive ? "text-primary" : ""}`} />
+                 <span className="hidden xl:inline">{link.name}</span>
+               </Link>
+             );
+          })}
         </nav>
 
         {/* Right: Search & User */}
