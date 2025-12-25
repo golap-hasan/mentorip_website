@@ -109,7 +109,7 @@ export default function AboutPage() {
         </div>
         
         <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-8">
-          <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-4 py-1.5 uppercase tracking-[0.3em] font-black text-[10px]">
+          <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-4 py-1.5 uppercase tracking-[0.3em] font-black text-xs">
             The SUPREMEiP Story
           </Badge>
           <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9]">
@@ -123,17 +123,17 @@ export default function AboutPage() {
           <div className="flex gap-4 pt-4">
              <div className="flex flex-col items-center">
                 <span className="text-3xl font-black text-slate-900 dark:text-white">25+</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Years</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Years</span>
              </div>
              <Separator orientation="vertical" className="h-10 bg-slate-200 dark:bg-white/10" />
              <div className="flex flex-col items-center">
                 <span className="text-3xl font-black text-slate-900 dark:text-white">7K+</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Clients</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Clients</span>
              </div>
              <Separator orientation="vertical" className="h-10 bg-slate-200 dark:bg-white/10" />
              <div className="flex flex-col items-center">
                 <span className="text-3xl font-black text-slate-900 dark:text-white">350+</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Associates</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Associates</span>
              </div>
           </div>
         </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="space-y-8">
           <div className="space-y-4">
-            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">WHO WE ARE</h2>
+            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">WHO WE ARE</h2>
             <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
               A Legacy of Excellence in Intellectual Property
             </h3>
@@ -167,7 +167,7 @@ export default function AboutPage() {
            {stats.map((stat, i) => (
              <Card key={i} className="border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 rounded-[2rem] p-8 space-y-2 group hover:bg-primary hover:border-primary transition-all duration-500 shadow-sm">
                <p className="text-4xl font-black text-slate-900 dark:text-white group-hover:text-white tracking-tighter transition-colors">{stat.value}</p>
-               <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-white/80 transition-colors">{stat.label}</p>
+               <p className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-white/80 transition-colors">{stat.label}</p>
              </Card>
            ))}
         </div>
@@ -189,14 +189,14 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 dark:from-slate-950/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-center bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/20 shadow-xl">
                  <p className="text-slate-900 dark:text-white font-black text-base tracking-tight uppercase">Barrister Shaleh Akram Somrat</p>
-                 <p className="text-[10px] text-primary dark:text-amber-400 font-bold uppercase tracking-[0.2em] mt-1.5">Head of Chambers, MentorIP</p>
+                 <p className="text-xs text-primary dark:text-amber-400 font-bold uppercase tracking-[0.2em] mt-1.5">Head of Chambers, MentorIP</p>
               </div>
             </div>
           </div>
           
           <div className="lg:col-span-3 space-y-8 px-6 lg:px-0">
             <div className="space-y-4">
-              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary dark:text-amber-400">OUR FOUNDER</h2>
+              <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary dark:text-amber-400">OUR FOUNDER</h2>
               <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
                 Architect of Global <br />
                 <span className="text-primary dark:text-amber-400 font-serif italic text-5xl">IP Strategy</span>
@@ -239,7 +239,7 @@ export default function AboutPage() {
       {/* Timeline Section */}
       <section className="space-y-16">
         <div className="text-center space-y-4">
-          <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">OUR JOURNEY</h2>
+          <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR JOURNEY</h2>
           <h3 className="text-4xl font-black text-slate-900 dark:text-white">Milestones of Growth</h3>
         </div>
         
@@ -250,7 +250,7 @@ export default function AboutPage() {
             {timeline.map((step, i) => (
               <div key={i} className="relative flex flex-col md:flex-row gap-8 items-start">
                 <div className="hidden md:flex absolute left-0 w-16 h-16 rounded-full bg-white dark:bg-slate-900 border-x border-slate-100 dark:border-slate-800 items-center justify-center z-10 shadow-sm group hover:border-primary transition-colors">
-                  <span className="text-[10px] font-black text-slate-400 group-hover:text-primary">{step.year}</span>
+                  <span className="text-xs font-black text-slate-400 group-hover:text-primary">{step.year}</span>
                 </div>
                 
                 <div className="md:ml-24 flex-1 p-8 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800/50 hover:border-primary/50 transition-all duration-300">
@@ -272,7 +272,7 @@ export default function AboutPage() {
       <section className="space-y-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
            <div className="space-y-4">
-             <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">OUR NETWORK</h2>
+             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR NETWORK</h2>
              <h3 className="text-4xl font-black text-slate-900 dark:text-white">Global Presence</h3>
            </div>
            <p className="max-w-md text-slate-500 dark:text-slate-400 font-medium italic">
@@ -297,7 +297,7 @@ export default function AboutPage() {
                      </p>
                    </div>
                    <Separator className="bg-slate-100 dark:bg-slate-800" />
-                   <div className="flex items-center gap-2 text-primary font-black text-[10px] uppercase tracking-widest cursor-pointer hover:gap-3 transition-all">
+                   <div className="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest cursor-pointer hover:gap-3 transition-all">
                       <span>Get Directions</span>
                       <ArrowRight className="w-3 h-3" />
                    </div>
@@ -311,7 +311,7 @@ export default function AboutPage() {
       <section className="bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-12 lg:p-20 border border-slate-100 dark:border-slate-800 shadow-sm">
          <div className="max-w-4xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">CORE CAPABILITIES</h2>
+              <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">CORE CAPABILITIES</h2>
               <h3 className="text-4xl font-black text-slate-900 dark:text-white">Comprehensive IP Solutions</h3>
             </div>
             
