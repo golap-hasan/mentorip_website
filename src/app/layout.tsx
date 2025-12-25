@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Navbar } from "@/components/common/Navbar";
 import { Sidebar } from "@/components/common/Sidebar";
+import { Footer } from "@/components/common/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,15 +58,7 @@ export default function RootLayout({
               </div>
 
               {/* Global Footer */}
-              <footer className="bg-card border-t py-8 text-sm text-muted-foreground">
-                <div className="max-w-[1920px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p>&copy; 2025 MENTOR IP. All rights reserved.</p>
-                    <div className="flex gap-6">
-                        <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
-                    </div>
-                </div>
-              </footer>
+              <Footer />
             </div>
           </ThemeProvider>
       </body>
