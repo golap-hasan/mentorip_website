@@ -26,7 +26,7 @@ export function MainDashboardContent() {
         {/* Main Hero Section - Takes up 2 columns */}
         <div className="xl:col-span-2">
           <Link href={`/category/${heroPost.categoryId}/${heroPost.slug}`}>
-            <Card className="group overflow-hidden border-0 bg-transparent shadow-none cursor-pointer">
+            <Card className="pt-0 group overflow-hidden border-0 bg-transparent shadow-none cursor-pointer">
               {/* Visual Header */}
               <div className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-blue-500/10">
                 {/* mesh-like gradient background */}
