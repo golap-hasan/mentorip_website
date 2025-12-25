@@ -8,8 +8,6 @@ import {
   Lock, 
   User, 
   ArrowRight, 
-  Github, 
-  Chrome,
   KeyRound,
   Eye,
   EyeOff,
@@ -43,9 +41,9 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             className="absolute top-0 left-0 w-1/2 h-full z-20 hidden lg:block"
         >
-            <div className="h-full w-full bg-slate-900 dark:bg-slate-950 p-16 flex flex-col justify-center items-center text-center text-white relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-slate-900/50 to-blue-600/30" />
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_0)] bg-[size:30px_30px]" />
+            <div className="h-full w-full bg-slate-50 dark:bg-slate-950 p-16 flex flex-col justify-center items-center text-center text-slate-900 dark:text-white relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-white/50 to-blue-500/10 dark:from-primary/30 dark:via-slate-900/50 dark:to-blue-600/30" />
+                <div className="absolute inset-0 opacity-5 dark:opacity-10 bg-[radial-gradient(circle_at_center,#000_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_center,white_1px,transparent_0)] bg-[size:30px_30px]" />
                 
                 <div className="relative z-10 space-y-10">
                     <div className="space-y-4">
@@ -57,7 +55,7 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
                         >
                             {isLogin ? "NEW HERE?" : "WELCOME BACK!"}
                         </motion.div>
-                        <p className="text-slate-400 font-medium italic text-lg max-w-xs mx-auto">
+                        <p className="text-slate-500 dark:text-slate-400 font-medium italic text-lg max-w-xs mx-auto">
                             {isLogin 
                                 ? "Sign up and start protecting your intellectual interests today." 
                                 : "To keep connected with us please login with your personal info."}
@@ -67,7 +65,7 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
                     <Button 
                         onClick={toggleAuth}
                         variant="outline" 
-                        className="rounded-full px-12 py-7 border-white/20 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 hover:border-white/50 active:scale-95 transition-all font-black text-xs uppercase tracking-[0.3em]"
+                        className="rounded-full px-12 py-7 border-slate-200 dark:border-white/20 bg-slate-100/50 dark:bg-white/5 backdrop-blur-md text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-white/10 hover:border-slate-400 dark:hover:border-white/50 active:scale-95 transition-all font-black text-xs uppercase tracking-[0.3em]"
                     >
                         {isLogin ? "Register Now" : "Sign In"}
                     </Button>
@@ -132,23 +130,6 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
                         <Button className="w-full h-16 rounded-2xl bg-primary font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
                             Sign In to Account
                         </Button>
-
-                        <div className="space-y-6">
-                            <div className="relative">
-                                <div className="absolute inset-0 flex items-center"><Separator className="bg-slate-100 dark:bg-white/5" /></div>
-                                <div className="relative flex justify-center text-[10px] uppercase font-black text-slate-400 tracking-widest">
-                                    <span className="bg-white dark:bg-slate-900 px-4">Or continue with</span>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <Button variant="outline" className="h-14 rounded-2xl border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-slate-800/50 font-bold gap-2">
-                                    <Chrome className="w-5 h-5" /> Google
-                                </Button>
-                                <Button variant="outline" className="h-14 rounded-2xl border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-slate-800/50 font-bold gap-2">
-                                    <Github className="w-5 h-5" /> GitHub
-                                </Button>
-                            </div>
-                        </div>
 
                         <div className="lg:hidden text-center pt-4">
                             <button onClick={toggleAuth} className="text-sm font-bold text-slate-500 italic hover:text-primary transition-colors">

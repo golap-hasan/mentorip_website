@@ -34,6 +34,8 @@ export function Navbar() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   // Avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
@@ -127,7 +129,7 @@ export function Navbar() {
              <Input 
                 type="search" 
                 placeholder="Search..." 
-                className="h-9 w-full rounded-full bg-slate-100 border-none pl-9 focus-visible:ring-1" 
+                className="h-9 w-full rounded-full bg-slate-100 dark:bg-slate-800 border-none pl-9 focus-visible:ring-1" 
              />
              <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
           </div>
@@ -139,36 +141,72 @@ export function Navbar() {
                 </div>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Mentor IP User</p>
-                  <p className="text-xs leading-none text-muted-foreground">user@mentorip.com</p>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="cursor-pointer">
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
-              </DropdownMenuItem>
+            <DropdownMenuContent className="w-60" align="end" forceMount>
+              {isLoggedIn ? (
+                <>
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-black italic tracking-tight">Mentor IP User</p>
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none">user@mentorip.com</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="cursor-pointer font-bold text-sm">
+                    <User className="mr-2 h-4 w-4 text-primary" />
+                    <span>View Profile</span>
+                  </DropdownMenuItem>
+                </>
+              ) : (
+                <>
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-black italic tracking-tight">Welcome to MentorIP</p>
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none">Security for your Innovation</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <Link href="/auth/login">
+                    <DropdownMenuItem className="cursor-pointer font-bold text-sm">
+                      <LogOut className="mr-2 h-4 w-4 rotate-180 text-primary" />
+                      <span>Log In</span>
+                    </DropdownMenuItem>
+                  </Link>
+                  <Link href="/auth/register">
+                    <DropdownMenuItem className="cursor-pointer font-bold text-sm">
+                      <Users className="mr-2 h-4 w-4 text-primary" />
+                      <span>Register Account</span>
+                    </DropdownMenuItem>
+                  </Link>
+                </>
+              )}
+
               <DropdownMenuSeparator />
               <div className="flex items-center justify-between px-2 py-1.5 focus:bg-accent focus:text-accent-foreground select-none">
                 <div className="flex items-center gap-2">
-                    {theme === 'dark' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-                    <span className="text-sm">Dark Mode</span>
+                    {theme === 'dark' ? <Moon className="h-4 w-4 text-blue-400" /> : <Sun className="h-4 w-4 text-amber-500" />}
+                    <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Dark Mode</span>
                 </div>
                 {mounted && (
                   <Switch 
+                    className="scale-75"
                     checked={theme === "dark"} 
                     onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")} 
                   />
                 )}
               </div>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-600 focus:text-red-600 cursor-pointer">
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
-              </DropdownMenuItem>
+              
+              {isLoggedIn && (
+                <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem 
+                    onClick={() => setIsLoggedIn(false)}
+                    className="text-red-500 focus:text-red-500 cursor-pointer font-black text-xs uppercase tracking-[0.2em]"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
