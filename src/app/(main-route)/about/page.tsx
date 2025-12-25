@@ -35,7 +35,7 @@ const stats = [
 const timeline = [
   { year: "2000", title: "The Foundation", desc: "Founded under the name 'Law & Legal' by Dr. Qumrul Hossain, specializing in domestic pharmaceutical law." },
   { year: "2008", title: "Modern Era", desc: "Mr. Reagan joins the firm, introducing global IP standards and international vision." },
-  { year: "2015", title: "Transformation", desc: "Acquired and rebranded as SUPREMEiP Law Firm, shifting focus exclusively to Intellectual Property." },
+  { year: "2015", title: "Transformation", desc: "Acquired and rebranded as MentorIP Law Firm, shifting focus exclusively to Intellectual Property." },
   { year: "2024", title: "Present Day", desc: "Recognized as a premier international IP firm with liaison offices in 5+ countries." }
 ];
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
         
         <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-10">
           <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
-            The SUPREMEiP Story
+            The MentorIP Story
           </Badge>
           <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
             PROTECTING <span className="text-primary italic">IDEAS</span>.<br /> 

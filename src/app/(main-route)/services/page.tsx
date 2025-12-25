@@ -29,48 +29,52 @@ import { Separator } from "@/components/ui/separator";
 
 const serviceCategories = [
   {
-    title: "Intellectual Property",
+    title: "TRADEMARK",
+    desc: "We provide comprehensive trademark services that cover every aspect of intellectual property protection for your brand.",
     icon: ShieldCheck,
-    color: "primary",
-    services: [
-      { name: "Trademark Registration", desc: "Global protection for brands and logos." },
-      { name: "Patent Filing & Strategy", desc: "Securing inventions and new technologies." },
-      { name: "Copyright Protection", desc: "Safeguarding creative and literary works." },
-      { name: "Industrial Design", desc: "Protecting the visual aesthetics of products." }
-    ]
+    color: "primary"
   },
   {
-    title: "Litigation & Disputes",
+    title: "PATENT",
+    desc: "We specialize in securing and protecting patent rights for inventions, offering a broad range of services.",
+    icon: Zap,
+    color: "primary"
+  },
+  {
+    title: "INDUSTRIAL DESIGN",
+    desc: "We offer specialized services to protect the visual appearance of your products through industrial design registration.",
+    icon: Shapes,
+    color: "primary"
+  },
+  {
+    title: "COPYRIGHT",
+    desc: "Our copyright services provide robust protection for your original works and creations.",
+    icon: BookOpen,
+    color: "primary"
+  },
+  {
+    title: "IP LITIGATION & ENFORCEMENTS",
+    desc: "Trademark infringement in Bangladesh occurs when an individual or entity utilizes a trademark that is either identical or confusingly similar to a registered trademark without the owner’s consent.",
     icon: Scale,
-    color: "primary",
-    services: [
-      { name: "IPR Enforcement", desc: "Anti-counterfeiting and market raids." },
-      { name: "Legal Opinions", desc: "Expert assessment of IP validity/infringement." },
-      { name: "Dispute Resolution", desc: "Alternative resolution for complex IP conflicts." },
-      { name: "IP Litigation", desc: "Strategic representation in court proceedings." }
-    ]
+    color: "primary"
   },
   {
-    title: "Corporate Advisory",
-    icon: Building2,
-    color: "primary",
-    services: [
-      { name: "Company Incorporation", desc: "Business setup for domestic & MNC clients." },
-      { name: "Corporate Law", desc: "Comprehensive legal advisory for enterprises." },
-      { name: "Licensing & Franchising", desc: "Structuring IP monetization agreements." },
-      { name: "Secretarial Support", desc: "Compliance and structural documentation." }
-    ]
+    title: "GEOGRAPHICAL INDICATION",
+    desc: "We provide a range of services to protect products that have specific geographic origins, ensuring their uniqueness.",
+    icon: Globe2,
+    color: "primary"
   },
   {
-    title: "Regulatory Services",
-    icon: Gavel,
-    color: "primary",
-    services: [
-      { name: "Trade License", desc: "Local business permits and registrations." },
-      { name: "IRC / ERC", desc: "Import and Export certificates coordination." },
-      { name: "Trade Secret Shield", desc: "Internal policy for protecting confidential info." },
-      { name: "Startup Support", desc: "Legal structural aid for emerging innovators." }
-    ]
+    title: "IP DUE DILIGENCE",
+    desc: "We offer strategic intellectual property due diligence services to assist clients with informed decision-making.",
+    icon: Target,
+    color: "primary"
+  },
+  {
+    title: "FREEDOM TO OPERATE (FTO)",
+    desc: "Our Freedom to Operate (FTO) services ensure that your business can commercialize products without infringing third-party intellectual property rights.",
+    icon: Lock,
+    color: "primary"
   }
 ];
 
@@ -126,31 +130,31 @@ export default function ServicesPage() {
            </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
            {serviceCategories.map((cat, i) => (
-             <Card key={i} className="group border-slate-100 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-[3rem] p-8 lg:p-12 hover:shadow-[0_20px_50px_rgba(56,189,248,0.08)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full -mr-24 -mt-24 group-hover:bg-primary/10 group-hover:scale-150 transition-all duration-1000" />
+             <Card key={i} className="group border-slate-100 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-[2.5rem] p-8 hover:shadow-[0_20px_50px_rgba(56,189,248,0.08)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden flex flex-col justify-between cursor-pointer">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 group-hover:scale-150 transition-all duration-1000" />
                 
-                <div className="relative space-y-8">
+                <div className="relative space-y-6">
                    <div className="flex items-center justify-between">
-                      <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary group-hover:rotate-[360deg] transition-all duration-700">
-                        <cat.icon className="w-8 h-8 text-slate-400 group-hover:text-white" />
+                      <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary group-hover:rotate-[360deg] transition-all duration-700">
+                        <cat.icon className="w-7 h-7 text-slate-400 group-hover:text-white" />
                       </div>
-                      <LayoutGrid className="w-5 h-5 text-slate-100 dark:text-slate-800" />
+                      <LayoutGrid className="w-4 h-4 text-slate-100 dark:text-slate-800" />
                    </div>
 
-                   <h4 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight italic underline decoration-primary/20 underline-offset-[10px]">{cat.title}</h4>
-                   
-                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
-                      {cat.services.map((service, j) => (
-                        <div key={j} className="space-y-1.5 group/service cursor-pointer">
-                           <div className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/service:w-4 group-hover/service:bg-primary transition-all duration-300" />
-                              <p className="text-sm font-black text-slate-800 dark:text-slate-200 group-hover/service:text-primary transition-colors">{service.name}</p>
-                           </div>
-                           <p className="text-[11px] text-slate-500 font-medium pl-4 leading-tight group-hover/service:text-slate-600 dark:group-hover/service:text-slate-300 transition-colors uppercase tracking-tight">{service.desc}</p>
-                        </div>
-                      ))}
+                   <div className="space-y-3">
+                      <h4 className="text-lg font-black text-slate-900 dark:text-white tracking-tight italic group-hover:text-primary transition-colors">{cat.title}</h4>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
+                         {cat.desc}
+                      </p>
+                   </div>
+                </div>
+
+                <div className="relative pt-6 mt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between group/link">
+                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">View More</span>
+                   <div className="w-8 h-8 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center group-hover/link:bg-primary transition-colors">
+                      <ArrowRight className="w-3 h-3 text-slate-400 group-hover/link:text-white transition-transform group-hover/link:translate-x-0.5" />
                    </div>
                 </div>
              </Card>
