@@ -7,8 +7,6 @@ import {
   Mail, 
   Lock, 
   User, 
-  ArrowRight, 
-  KeyRound,
   Eye,
   EyeOff,
   Sparkles
@@ -42,8 +40,8 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
             className="absolute top-0 left-0 w-1/2 h-full z-20 hidden lg:block"
         >
             <div className="h-full w-full bg-slate-50 dark:bg-slate-950 p-16 flex flex-col justify-center items-center text-center text-slate-900 dark:text-white relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-white/50 to-blue-500/10 dark:from-primary/30 dark:via-slate-900/50 dark:to-blue-600/30" />
-                <div className="absolute inset-0 opacity-5 dark:opacity-10 bg-[radial-gradient(circle_at_center,#000_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_center,white_1px,transparent_0)] bg-[size:30px_30px]" />
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-white/50 to-blue-500/10 dark:from-primary/30 dark:via-slate-900/50 dark:to-blue-600/30" />
+                <div className="absolute inset-0 opacity-5 dark:opacity-10 bg-[radial-gradient(circle_at_center,#000_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_center,white_1px,transparent_0)] bg-size-[30px_30px]" />
                 
                 <div className="relative z-10 space-y-10">
                     <div className="space-y-4">
@@ -133,7 +131,7 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
 
                         <div className="lg:hidden text-center pt-4">
                             <button onClick={toggleAuth} className="text-sm font-bold text-slate-500 italic hover:text-primary transition-colors">
-                                Don't have an account? <span className="font-black text-primary uppercase tracking-wider not-italic">Sign Up</span>
+                                Don&apos;t have an account? <span className="font-black text-primary uppercase tracking-wider not-italic">Sign Up</span>
                             </button>
                         </div>
                     </motion.div>
@@ -219,7 +217,3 @@ export default function AuthPage({ defaultIsLogin = true }: { defaultIsLogin?: b
     </div>
   );
 }
-
-const Separator = ({ className }: { className?: string }) => (
-    <div className={`h-[1px] w-full ${className}`} />
-);

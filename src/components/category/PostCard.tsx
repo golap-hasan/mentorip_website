@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Clock, Calendar } from "lucide-react";
 
 interface PostCardProps {
@@ -13,7 +12,7 @@ interface PostCardProps {
   author?: string;
   date?: string;
   readTime?: string;
-  baseHref?: string; // Optional: "category", "ai", etc.
+  baseHref?: string;
 }
 
 export function PostCard({
