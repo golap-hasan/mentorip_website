@@ -1,13 +1,11 @@
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { NewsletterBox } from "@/components/blog/NewsletterBox";
 import { getPostBySlug } from "@/lib/blog-data";
 import { notFound } from "next/navigation";
 import { 
-  Share2, Clock, Calendar, FileText, Gavel, 
-  Search, Scale, CheckCircle, ArrowRight 
+  Share2, Clock, Calendar, FileText,
 } from "lucide-react";
 
 export default async function DynamicPostPage({ params }: { params: Promise<{ categoryId: string; slug: string }> }) {
@@ -25,7 +23,7 @@ export default async function DynamicPostPage({ params }: { params: Promise<{ ca
           <div className="flex items-center gap-3 mb-6">
              <div className="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-900 border flex items-center justify-center text-lg">⚖️</div>
              <div className="flex-1 min-w-0">
-                <p className="text-[11px] font-bold tracking-[0.1em] text-slate-900 dark:text-slate-200 uppercase">{post.author}</p>
+                <p className="text-[11px] font-bold tracking-widest text-slate-900 dark:text-slate-200 uppercase">{post.author}</p>
                 <div className="flex items-center gap-3 text-[10px] text-slate-400 mt-0.5">
                    <span className="flex items-center gap-1"><Calendar className="w-2.5 h-2.5"/> {post.date}</span>
                    <span className="flex items-center gap-1"><Clock className="w-2.5 h-2.5"/> {post.readTime}</span>
@@ -48,7 +46,7 @@ export default async function DynamicPostPage({ params }: { params: Promise<{ ca
             ))}
           </div>
 
-          <div className="relative w-full aspect-[21/9] rounded-xl overflow-hidden mb-10 border border-slate-100 dark:border-slate-800 shadow-sm">
+          <div className="relative w-full aspect-21/9 rounded-xl overflow-hidden mb-10 border border-slate-100 dark:border-slate-800 shadow-sm">
             <Image src={post.imageUrl} alt={post.title} fill className="object-cover grayscale-[0.2] contrast-[0.98]" priority />
           </div>
 
@@ -84,7 +82,7 @@ export default async function DynamicPostPage({ params }: { params: Promise<{ ca
         </div>
       </article>
 
-      <aside className="w-full lg:w-[320px] flex-shrink-0 space-y-6">
+      <aside className="w-full lg:w-[320px] shrink-0 space-y-6">
         <div className="sticky top-24 space-y-6">
            {post.toc && <TableOfContents items={post.toc} />}
            <NewsletterBox />

@@ -131,16 +131,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/20 rounded-full transition-colors;
+    @apply bg-primary rounded-full transition-colors;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/40;
+    @apply bg-primary/40;
   }
 
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: oklch(0.708 0 0 / 20%) transparent;
-  }
 }
