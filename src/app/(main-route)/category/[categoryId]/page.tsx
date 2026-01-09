@@ -1,6 +1,6 @@
 import { getCategoryById, getPostsByCategoryId } from "@/lib/blog-data";
-import { CategoryHeader } from "@/components/blog/CategoryHeader";
-import { PostCard } from "@/components/blog/PostCard";
+import { CategoryHeader } from "@/components/category/CategoryHeader";
+import { PostCard } from "@/components/category/PostCard";
 import { notFound } from "next/navigation";
 
 export default async function DynamicCategoryPage({ params }: { params: Promise<{ categoryId: string }> }) {

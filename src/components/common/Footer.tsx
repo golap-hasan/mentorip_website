@@ -32,7 +32,7 @@ export function Footer() {
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Created by</p>
               <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] group-hover:text-primary transition-colors relative">
                 SmartEdge Technologies
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
               </span>
             </div>
         </div>

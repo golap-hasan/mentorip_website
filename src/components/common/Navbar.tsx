@@ -1,9 +1,10 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image";
-import { Search, User, Home, Info, Users, Briefcase, Phone, Image as ImageIcon, Menu, ChevronDown, LogOut, Settings, Moon, Sun } from "lucide-react";
+import { Search, User, Home, Info, Users, Briefcase, Phone, Image as ImageIcon, Menu, LogOut, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Sidebar } from "@/components/common/Sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -18,7 +19,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const navLinks = [
   { name: "Home", href: "/", icon: Home },
@@ -31,18 +32,12 @@ const navLinks = [
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  // Avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="max-w-[1920px] mx-auto px-4 h-16 flex items-center justify-between gap-4">
         
         {/* Left: LOGO */}
@@ -55,7 +50,7 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-[300px] p-0 flex flex-col">
-               <SheetHeader className="p-6 border-b flex-shrink-0">
+               <SheetHeader className="p-6 border-b shrink-0">
                  <SheetTitle className="text-left font-bold text-primary">MENTOR IP</SheetTitle>
                </SheetHeader>
                <ScrollArea className="flex-1">
@@ -125,7 +120,7 @@ export function Navbar() {
 
         {/* Right: Search & User */}
         <div className="flex items-center justify-end space-x-2">
-           <div className="hidden md:flex relative w-full max-w-[180px] xl:max-w-[240px]">
+           <div className="hidden md:flex relative w-full max-w-[180px] xl:max-w-60">
              <Input 
                 type="search" 
                 placeholder="Search..." 
@@ -134,14 +129,14 @@ export function Navbar() {
              <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
           </div>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full text-slate-600 focus-visible:ring-0">
-                <div className="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center transition-colors">
+            <DropdownMenuTrigger>
+                <Avatar className="size-9">
+                  <AvatarFallback>
                     <User className="h-4 w-4" />
-                </div>
-              </Button>
+                  </AvatarFallback>
+                </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-60" align="end" forceMount>
+            <DropdownMenuContent className="w-60" align="end">
               {isLoggedIn ? (
                 <>
                   <DropdownMenuLabel className="font-normal">
@@ -186,13 +181,11 @@ export function Navbar() {
                     {theme === 'dark' ? <Moon className="h-4 w-4 text-blue-400" /> : <Sun className="h-4 w-4 text-amber-500" />}
                     <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Dark Mode</span>
                 </div>
-                {mounted && (
                   <Switch 
                     className="scale-75"
                     checked={theme === "dark"} 
                     onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")} 
                   />
-                )}
               </div>
               
               {isLoggedIn && (

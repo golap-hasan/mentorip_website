@@ -26,7 +26,7 @@ export function CategoryHeader({ title, description, imageUrl, postCount }: Cate
         </div>
 
         {imageUrl && (
-          <div className="w-full md:w-[320px] h-[180px] relative rounded-lg overflow-hidden flex-shrink-0 border border-slate-200/50 dark:border-slate-800/50 shadow-sm">
+          <div className="w-full md:w-[320px] h-[180px] relative rounded-lg overflow-hidden shrink-0 border border-slate-200/50 dark:border-slate-800/50 shadow-sm">
             <Image
               src={imageUrl}
               alt={title}

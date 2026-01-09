@@ -13,22 +13,24 @@ export function NewsletterBox() {
   };
 
   return (
-    <div className="bg-card rounded-lg border p-6 shadow-sm">
-      <h3 className="text-lg font-bold mb-2">Subscribe to Newsletter</h3>
-      <p className="text-sm text-muted-foreground mb-4">
-        Get the latest IP legal insights delivered to your inbox.
+    <div className="rounded-xl border bg-card/60 backdrop-blur p-5 shadow-sm">
+      <h3 className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-muted-foreground">
+        Subscribe to Newsletter
+      </h3>
+      <p className="mt-2 text-[12px] text-muted-foreground">
+        Get the latest IP insights in your inbox.
       </p>
-      <form onSubmit={handleSubscribe} className="space-y-3">
+      <form onSubmit={handleSubscribe} className="mt-4 flex items-center gap-2">
         <Input
           type="email"
           placeholder="Type your email..."
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full h-10"
+          className="h-10"
         />
-        <Button type="submit" className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold h-10">
-          Subscribe
+        <Button type="submit" className="h-10 px-4 font-bold bg-pink-500 hover:bg-pink-600 text-white">
+          <Send />
         </Button>
       </form>
     </div>
