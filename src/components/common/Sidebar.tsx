@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import { 
   LayoutDashboard, 
   FileText, 
@@ -20,8 +21,8 @@ import {
   LucideIcon,
 } from "lucide-react";
 import { Separator } from "../ui/separator";
-
-import { categories as dynamicCategories } from "@/lib/blog-data";
+import type { Category } from "@/types/category.type";
+import { getAllCategories } from "@/services/category";
 
 // Icon mapping helper
 const iconMap: Record<string, LucideIcon> = {
@@ -30,17 +31,33 @@ const iconMap: Record<string, LucideIcon> = {
   ShieldCheck, FileCode, Copyright, Zap, Microscope
 };
 
-const categories = [
-  { name: "All Posts", icon: LayoutDashboard, slug: "" },
-  ...dynamicCategories.map(cat => ({
-    name: cat.name,
-    icon: iconMap[cat.iconName] || FileText,
-    slug: cat.id
-  }))
-];
-
 export function Sidebar() {
   const pathname = usePathname();
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const res = await getAllCategories();
+      if (res?.success && Array.isArray(res?.data)) {
+        setCategories(res.data as Category[]);
+      } else {
+        setCategories([]);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const sidebarCategories = useMemo(() => {
+    return [
+      { name: "All Posts", icon: LayoutDashboard, slug: "" },
+      ...categories.map((cat) => ({
+        name: cat.name,
+        icon: iconMap[cat.iconName] || FileText,
+        slug: cat.slug,
+      })),
+    ];
+  }, [categories]);
 
   return (
     <aside className="w-full">
@@ -48,7 +65,7 @@ export function Sidebar() {
         <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Categories</h3>
       </div>
       <div className="flex flex-col space-y-1 mb-6">
-        {categories.map((cat, i) => {
+        {sidebarCategories.map((cat, i) => {
           const href = cat.slug === "" ? "/" : `/category/${cat.slug}`;
           const isActive = cat.slug === "" ? pathname === "/" : pathname.startsWith(href);
           return (

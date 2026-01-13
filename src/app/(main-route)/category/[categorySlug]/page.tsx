@@ -1,16 +1,22 @@
-import { getCategoryById, getPostsByCategoryId } from "@/lib/blog-data";
 import { CategoryHeader } from "@/components/category/CategoryHeader";
 import { PostCard } from "@/components/category/PostCard";
 import { notFound } from "next/navigation";
+import { getCategoryBySlug } from "@/services/category";
 
-export default async function DynamicCategoryPage({ params }: { params: Promise<{ categoryId: string }> }) {
-  const { categoryId } = await params;
-  const category = getCategoryById(categoryId);
-  const categoryPosts = getPostsByCategoryId(categoryId);
+export default async function DynamicCategoryPage({
+  params,
+}: {
+  params: Promise<{ categorySlug: string }>;
+}) {
+  const { categorySlug } = await params;
 
-  if (!category) {
+  const res = await getCategoryBySlug(categorySlug);
+  if (!res?.success || !res?.data) {
     notFound();
   }
+
+  const category = res.data;
+  const categoryPosts = category.posts || [];
 
   return (
     <div className="space-y-8">
@@ -18,7 +24,7 @@ export default async function DynamicCategoryPage({ params }: { params: Promise<
         title={category.name}
         description={category.description}
         imageUrl={category.imageUrl}
-        postCount={categoryPosts.length}
+        postCount={category.postCount ?? categoryPosts.length}
       />
 
       {categoryPosts.length > 0 ? (
@@ -26,8 +32,13 @@ export default async function DynamicCategoryPage({ params }: { params: Promise<
           {categoryPosts.map((post) => (
             <PostCard 
               key={post.slug} 
-              categorySlug={categoryId} 
-              {...post} 
+              title={post.title}
+              excerpt={post.subtitle}
+              slug={post.slug}
+              categorySlug={category.slug}
+              imageUrl={post.coverImage}
+              tags={post.tag}
+              readTime={post.readTime}
             />
           ))}
         </div>

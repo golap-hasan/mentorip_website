@@ -181,7 +181,7 @@ export function Navbar() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button type="button" aria-label="User menu">
-                <Avatar className="size-9">
+                <Avatar className="size-9 border">
                   <AvatarFallback>
                     {getInitials(currentUser?.name || "User")}
                   </AvatarFallback>
