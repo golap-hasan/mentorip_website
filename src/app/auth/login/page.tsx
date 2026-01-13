@@ -1,7 +1,10 @@
-"use client";
+import LoginForm from "@/components/auth/LoginForm";
 
-import AuthPage from "../page";
-
-export default function LoginPage() {
-    return <AuthPage defaultIsLogin={true} />;
+export default function Login() {
+    
+    return (
+        <>
+            <LoginForm />
+        </>
+    )
 }

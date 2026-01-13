@@ -2,17 +2,42 @@ import { getValidAccessTokenForServerActions } from "@/lib/getValidAccessToken";
 
 export const serverFetch = async (
   endpoint: string,
-  options: RequestInit & { tags?: string[]; revalidate?: number } = {}
+  options: Omit<RequestInit, "body"> & {
+    body?: unknown;
+    tags?: string[];
+    revalidate?: number;
+  } = {}
 ) => {
   const accessToken = await getValidAccessTokenForServerActions();
-  const { tags, revalidate, ...rest } = options;
+  const { tags, revalidate, headers, ...rest } = options;
+  let body = options.body;
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}${endpoint}`, {
+  const defaultHeaders: Record<string, string> = {
+    Authorization: `Bearer ${accessToken}`,
+  };
+
+  // Automatically handle body stringification and Content-Type
+  if (body !== undefined && body !== null) {
+    if (body instanceof FormData) {
+      // For FormData, browser sets boundary
+    } else if (typeof body === "object") {
+      body = JSON.stringify(body);
+      defaultHeaders["Content-Type"] = "application/json";
+    }
+  }
+
+  const url = `${process.env.NEXT_PUBLIC_BASE_API}${endpoint}`;
+
+  if (process.env.NODE_ENV === "development") {
+    console.log(`🚀 [API Request]: ${rest.method || "GET"} ${endpoint}`);
+  }
+
+  const res = await fetch(url, {
     ...rest,
+    body: body as BodyInit,
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-      ...rest.headers,
+      ...defaultHeaders,
+      ...headers,
     },
     next: {
       ...(tags && { tags }),
@@ -20,6 +45,19 @@ export const serverFetch = async (
     },
   });
 
-  if (!res.ok) throw new Error(`Fetch failed: ${res.statusText}`);
+  // Handle Non-OK responses
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    if (process.env.NODE_ENV === "development") {
+      console.error(`❌ [API Error]: ${endpoint}`, errorData);
+    }
+    throw new Error(errorData.message || `Fetch failed: ${res.statusText}`);
+  }
+
+  // Handle 204 No Content or empty bodies
+  if (res.status === 204 || res.headers.get("content-length") === "0") {
+    return null;
+  }
+
   return res.json();
 };

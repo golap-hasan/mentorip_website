@@ -11,7 +11,7 @@ export const signInUser = async (userData: FieldValues): Promise<any> => {
   try {
     const result = await serverFetch('/user/signin', {
       method: 'POST',
-      body: JSON.stringify(userData),
+      body: userData,
     });
 
     if (result?.success) {
@@ -19,7 +19,7 @@ export const signInUser = async (userData: FieldValues): Promise<any> => {
       const decodedData: any = jwtDecode(accessToken);
 
       // ROLE CHECK
-      if (decodedData?.role !== 'ADMIN' && decodedData?.role !== 'SUPER_ADMIN') {
+      if (decodedData?.role !== 'USER') {
         return {
           success: false,
           message: "You are not authorized to access this panel!",
@@ -34,6 +34,40 @@ export const signInUser = async (userData: FieldValues): Promise<any> => {
     return result;
   } catch (error: any) {
     return { success: false, message: error?.message || "Login failed" };
+  }
+};
+
+// signUpUser
+export const signUpUser = async (userData: FieldValues): Promise<any> => {
+  try {
+    const result = await serverFetch('/user/signup', {
+      method: 'POST',
+      body: userData,
+    });
+
+    return result;
+  } catch (error: any) {
+    return { success: false, message: error?.message || "Signup failed" };
+  }
+};
+
+// verifySignupOTP
+export const verifySignupOTP = async (data: { userEmail: string; otp: string }): Promise<any> => {
+  try {
+    const result = await serverFetch('/user/verify-signup-otp', {
+      method: 'POST',
+      body: data,
+    });
+
+    if (result?.success) {
+      const cookieStore = await cookies();
+      cookieStore.set('accessToken', result?.data?.accessToken);
+      cookieStore.set('refreshToken', result?.data?.refreshToken);
+    }
+
+    return result;
+  } catch (error: any) {
+    return { success: false, message: error?.message || "OTP verification failed" };
   }
 };
 
@@ -60,7 +94,7 @@ export const changePassword = async (data: FieldValues): Promise<any> => {
   try {
     const result = await serverFetch('/user/change-password', {
       method: 'PATCH',
-      body: JSON.stringify(data),
+      body: data,
     });
 
     if (result?.success) {
@@ -80,7 +114,7 @@ export const forgotPassword = async (email: string): Promise<any> => {
   try {
     const result = await serverFetch('/user/forgot-password', {
       method: 'POST',
-      body: JSON.stringify({ email }),
+      body: { email },
     });
 
     if (result?.success) {
@@ -101,7 +135,7 @@ export const sendForgotPasswordOtpAgain = async (): Promise<any> => {
   try {
     const result = await serverFetch('/user/send-forgot-password-otp-again', {
       method: 'POST',
-      body: JSON.stringify({ token }),
+      body: { token },
     });
 
     return result;
@@ -118,7 +152,7 @@ export const verifyOtpForForgotPassword = async (otp: string): Promise<any> => {
   try {
     const result = await serverFetch('/user/verify-forgot-password-otp', {
       method: 'POST',
-      body: JSON.stringify({ token, otp }),
+      body: { token, otp },
     });
 
     if (result?.success) {
@@ -139,7 +173,7 @@ export const setNewPassword = async (newPassword: string): Promise<any> => {
   try {
     const result = await serverFetch('/user/reset-password', {
       method: 'POST',
-      body: JSON.stringify({ resetPasswordToken, newPassword }),
+      body: { resetPasswordToken, newPassword },
     });
 
     if (result?.success) {
@@ -186,7 +220,7 @@ export const updateUserData = async (userData: FieldValues): Promise<any> => {
   try {
     const result = await serverFetch('/user/update-user-data', {
       method: 'PATCH',
-      body: JSON.stringify(userData),
+      body: userData,
     });
 
     if (result?.success) {

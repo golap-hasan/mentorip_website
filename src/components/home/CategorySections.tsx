@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Clock, Calendar, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { posts, getCategoryById } from "@/lib/blog-data";
@@ -74,7 +74,7 @@ export function CategorySection({ categoryId }: CategorySectionProps) {
         </div>
         
         {/* Right Gradient/Arrow hint for scroll */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none opacity-0 group-hover/scroll:opacity-100 transition-opacity" />
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-linear-to-l from-white dark:from-slate-950 to-transparent pointer-events-none opacity-0 group-hover/scroll:opacity-100 transition-opacity" />
         <div className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white dark:bg-slate-900 border shadow-lg flex items-center justify-center opacity-0 group-hover/scroll:opacity-100 transition-opacity translate-x-4 group-hover/scroll:translate-x-0 pointer-events-none">
            <ChevronRight className="w-4 h-4 text-slate-400" />
         </div>
